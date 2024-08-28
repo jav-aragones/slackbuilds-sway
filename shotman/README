@@ -1,0 +1,72 @@
+ shotman screensaver
+=====================
+
+The uncompromising screenshot GUI for Wayland compositors.
+
+shotman takes a screenshot and shows it in a small floating thumbnail window. The screenshot can then copied with ctrl+c, deleted with d, or dismissed with Esc.
+
+shotman is designed to run in response to some global hotkey (e.g.: Super+P, PrintScreen, etc). It is designed for interactive usage.
+
+# Goals
+
+Fast (less than 80ms to render the screenshot window on a 2018 laptop)
+Simple design (delegates as much as possible to the compositor; avoids unnecessary work)
+
+# Usage
+
+shotman --capture output takes a screenshot of the currently active output.
+shotman --capture window takes a screenshot of the currently active window (sway-only).
+shotman --capture region takes a screenshot of a custom region (requires slurp).
+
+The --copy parameter may be specified to automatically copy the screenshot into the clipboard.
+
+# Keyboard controls
+
+Esc or q: exit/quit, keeping the saved the screenshot
+Del or d: deleting/discard the screenshot and exit
+Ctrl+C or XF86Copy: copy the screenshot into the clipboard
+Ctrl+X or XF86Cut: cut the screenshot file into the clipboard
+Space: Unfocus screenshot window
+f: Toggle fullscreen (not implemented)
+e: Edit image (see below for details) (still unstable)
+h,j,k,l: move preview to another corner
+
+Hint: a deleted screenshot will remain in clipboard until something else is copied to the clipboard, or the shotman process is killed.
+
+Hint: when copying a screenshot and closing shotman, it will continue running in the background to hold the clipboard. It will exit automatically when the another application takes over the clipboard.
+
+Note: While the window can be focused with Space, it can only be focused again by hovering with a pointer. Consider closing it with Esc after copying/cutting instead.
+
+# Image editor
+
+By default gimp will be used to edit a screenshot. This can be overridden by using --image-editor PROG or by defining the IMAGE_EDITOR environment variable. For example:
+
+shotman --capture output --image-editor drawing
+export IMAGE_EDITOR=drawing
+shotman --capture output
+
+# Sway configuration
+
+A recommended sway configuration is:
+
+bindsym Mod4+p       exec shotman --capture window
+bindsym Mod4+Shift+p exec shotman --capture region
+bindsym Mod4+Ctrl+p  exec shotman --capture output
+
+# Caveats
+
+Only a few common buffer formats are supported. Saving the PNG screenshot will fail for other formats. I'm not sure that any compositor implements screencopy and could return another format. If so, please report the issue.
+
+# Prior art
+
+This section is incomplete.
+
+grim: works great, for its own use case. It is a lower-level cli tool, and saves into a file. Rendering that file as a thumbnail would be slow because it requires an entire encoding -> decoding round trip. I still use and recommend grim for scripted usage or scenarios where immediate interaction is not required.
+grimshot: same as above.
+swappy: doesn't save the file by default. Slow to start up and in general. The editor is pretty good. Its editor is worth considering as an editor for the e key mapping.
+flameshot: doesn't work on wayland?.
+spectacle: mentions it works on "non-KDE X11", but nothing about Wayland (note: haven't tried it).
+
+# Licence
+
+shotman is licensed under the ISC licence. See LICENCE.md for details.
