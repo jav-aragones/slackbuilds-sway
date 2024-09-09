@@ -1,0 +1,16 @@
+# Notas
+
+Hay un bug en el paquete tzdata que hace que el reloj solo se muestre con hora UTC.
+
+La solución provisora sería:
+
+
+
+https://github.com/Alexays/Waybar/issues/3575#issuecomment-2338813343
+
+Es decir agregar un módulo custom.
+
+
+Javier Aragones 
+
+(javaragones at gmail at com)
