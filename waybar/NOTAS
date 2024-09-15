@@ -4,13 +4,11 @@ Hay un bug en el paquete tzdata que hace que el reloj solo se muestre con hora U
 
 La solución provisora sería:
 
-
-
 https://github.com/Alexays/Waybar/issues/3575#issuecomment-2338813343
 
-Es decir agregar un módulo custom.
+Se agrega un módulo custom. Todas las configuraciones personaliadas, estan en el repo config_personalizadas.
 
 
-Javier Aragones 
+Javier Aragones  
 
 (javaragones at gmail at com)
