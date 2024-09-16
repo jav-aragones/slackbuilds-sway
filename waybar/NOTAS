@@ -1,5 +1,8 @@
 # Notas
 
+Se añade patch para fmt que permite carga de applets en la tray.
+
+
 Hay un bug en el paquete tzdata que hace que el reloj solo se muestre con hora UTC.
 
 La solución provisora sería:
