@@ -34,20 +34,11 @@ En mi caso quedó:
 
 esac
 
-# EXPERIMENTAL
-
-# Supuestamente cargaría pipewire al arrancar con sddm
-
-#
-
 /usr/bin/daemon -rB --pidfiles=~/.run --name=pipewire /usr/bin/pipewire 
 
 /usr/bin/daemon -rB --pidfiles=~/.run --name=pipewire-pulse /usr/bin/pipewire-pulse
 
 /usr/bin/daemon -rB --pidfiles=~/.run --name=wireplumber /usr/bin/wireplumber
-
-
-# Restore user shell setting that may have been clobbered by setting environment
 
 export SHELL=$SDDM_USER_SHE
 
