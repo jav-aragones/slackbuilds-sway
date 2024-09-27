@@ -1,5 +1,5 @@
 PRGNAM="jsoncpp"
-VERSION="1.9.4"
+VERSION="1.9.7"
 HOMEPAGE="https://github.com/open-source-parsers/jsoncpp"
 DOWNLOAD="https://github.com/open-source-parsers/jsoncpp.git"
 MD5SUM=""
