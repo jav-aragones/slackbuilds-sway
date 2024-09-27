@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=waybar
 SRCNAM=Waybar
 VERSION=${VERSION:-0.11.0}
-BUILD=${BUILD:-3}
+BUILD=${BUILD:-4}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -71,7 +71,7 @@ rm -rf $SRCNAM
 git clone https://github.com/Alexays/Waybar.git
 cd $SRCNAM
 #zcat $CWD/66b71cc8577d1296323b637afc89524a00779776.patch.gz | patch -p1
-patch -p1 $CWD/0001-Update-Wireplumber-API-to-0.5.patch
+#patch -p1 $CWD/0001-Update-Wireplumber-API-to-0.5.patch
 
 chown -R root:root .
 find -L . \
