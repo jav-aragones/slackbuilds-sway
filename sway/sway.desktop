@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Sway
+Comment=An i3-compatible Wayland compositor
+#Exec=sway
+
+# Permite usar pipewire en hyprland . EXPERIMENTAL
+
+Exec=dbus-launch --sh-syntax --exit-with-session sway
+Type=Application
