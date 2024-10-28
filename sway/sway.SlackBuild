@@ -26,7 +26,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=sway
-VERSION=${VERSION:-1.10-dev}
+VERSION=${VERSION:-1.10}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -65,10 +65,15 @@ fi
 set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
+
+#wget https://github.com/swaywm/sway/releases/download/1.10/sway-1.10.tar.gz
 cd $TMP
 rm -rf $PRGNAM
-git clone https://github.com/swaywm/sway.git
-cd $PRGNAM
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/sway-1.10.tar.gz
+#git clone https://github.com/swaywm/sway.git
+cd $PRGNAM-$VERSION
+
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -83,24 +88,10 @@ mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
   CXXFLAGS="$SLKCFLAGS" \
-  meson .. \
-    --buildtype=release \
-    --infodir=/usr/info \
-    --libdir=/usr/lib${LIBDIRSUFFIX} \
-    --localstatedir=/var \
-    --mandir=/usr/man \
+  meson setup .. \
     --prefix=/usr \
-    --sysconfdir=/etc \
-    -Dstrip=true \
-    -Ddefault-wallpaper=true \
-    -Dswaybar=true \
-    -Dtray=enabled \
-    -Dgdk-pixbuf=enabled \
-    -Dswaynag=true \
-    -Dbash-completions=true \
-    -Dzsh-completions=true \
-    -Dfish-completions=true \
-    -Dsd-bus-provider=libelogind
+    --mandir=/usr/man \
+    -Dstrip=true 
 
    "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
