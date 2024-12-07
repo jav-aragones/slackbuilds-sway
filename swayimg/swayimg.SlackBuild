@@ -44,6 +44,8 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
+wget -c https://github.com/artemsen/swayimg/archive/refs/tags/v$VERSION.tar.gz
+
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
@@ -68,8 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM || rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/v3.4.tar.gz
-#git clone https://github.com/artemsen/swayimg.git
+tar xvf $CWD/v$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 
 chown -R root:root .

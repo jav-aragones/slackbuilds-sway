@@ -44,6 +44,8 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
+wget -c https://github.com/swaywm/sway/releases/download/$VERSION/$PRGNAM-$VERSION.tar.gz
+
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
@@ -66,12 +68,12 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 
-#wget https://github.com/swaywm/sway/releases/download/1.10/sway-1.10.tar.gz
 cd $TMP
 rm -rf $PRGNAM
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/sway-1.10.tar.gz
-#git clone https://github.com/swaywm/sway.git
+
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+
 cd $PRGNAM-$VERSION
 
 chown -R root:root .
